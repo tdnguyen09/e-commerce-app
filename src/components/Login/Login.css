@@ -1,0 +1,43 @@
+.login-page {
+    border: solid 5px black;
+    text-align: center;
+    max-width: 600px;
+    min-width: 200px;
+    margin:  100px auto;
+    padding-top: 30px;
+}
+h2{
+    margin-bottom: 10px;
+}
+#login-form {
+    padding: 25px 50px;
+    display: flex;
+    flex-direction: column;
+    line-height: 2.5;
+    font-size: 20px;
+}
+label, a {
+    text-align: left;
+}
+#show-password-container {
+    display: inline-flex;
+    align-items: center;
+}
+#show-password-container input {
+    margin-right: 10px;
+}
+button {
+    background-color: rgb(251, 239, 69);
+    border-radius: 5px;
+    font-size: 20px;
+    margin-top: 20px;
+}
+a {
+    text-decoration: none;
+    font-size: 15px;
+    color: rgb(43, 43, 242);
+}
+
+@media screen and (max-width: 480px) {
+   
+}
