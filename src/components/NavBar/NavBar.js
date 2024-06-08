@@ -21,10 +21,10 @@ function NavBar() {
                     <NavLink to="/cart">
                         <img src={shoppingCart} alt="shopping-cart" className="icon"/>
                     </NavLink>
-                    <NavLink to="/wishlist">
+                    <NavLink to="/login">
                         <img src={userLogo} alt="user-logo" className="icon"/>
                     </NavLink>
-                    <NavLink to="/login">
+                    <NavLink to="/wishlist">
                         <img src={wishlist} alt="wishlist" className="icon"/>
                     </NavLink>
                 </div>

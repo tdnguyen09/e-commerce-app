@@ -17,14 +17,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    column-gap: 10px
+    column-gap: 10px;
 }
 .icon {
     width: 30px;
     box-sizing: border-box;
 }
 .icon:hover {
-    border: 0.5px blue solid;
+    border: 0.5px rgb(47, 47, 48) solid;
 }
 .navbar-middle {
     min-width: 50%;
@@ -33,11 +33,22 @@
     flex-direction: row;
     align-items: center;
     column-gap: 5px;
+    border: solid 1px black;
+    padding: 2px;
+}
+.navbar-middle :first-child:hover{
+    border: none;
+    cursor: pointer;
 }
 .navbar-middle input{
     min-width: 85%;
     min-height: 2em;
     font-size: 15px;
+    border: none;
+}
+.navbar-middle input:focus{
+    outline: none;
+    border: none;
 }
 
 #navbar2 {
@@ -51,7 +62,7 @@
 }
 
 .navbar-section{
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: black;
 }
 .navbar-section:hover {
