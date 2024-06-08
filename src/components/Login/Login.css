@@ -38,6 +38,11 @@ a {
     color: rgb(43, 43, 242);
 }
 
-@media screen and (max-width: 480px) {
-   
+@media screen and (max-width: 390px) {
+   .login-page{
+        width: 390px;
+   }
+   .fill-input{
+    border: 1px solid black;
+   }
 }
