@@ -1,0 +1,112 @@
+.signup-page {
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+}
+h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+form {
+    min-width: 390px;
+}
+
+/* form-section*/
+.input-container {
+    position: relative;
+    margin-top: 20px;
+}
+.input-label {
+    position: absolute;
+    top: 30%;
+    left: 22%;
+    padding: 0 5px;
+    pointer-events: none;
+    color: #7b7676;
+    transform: translateY(-130%);
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+.input-field {
+    width: 60%;
+    padding: 10px;
+    padding-top: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#address-additional-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 64%;
+    padding: 15px;
+    margin: auto;
+}
+
+.address-input-field {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-top: 5px;
+}
+
+#postcode-input {
+    width: 20%;
+}
+
+button {
+    background-color: rgb(225, 222, 222);
+    width: 65%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 1rem;
+}
+
+p{
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+}
+
+#login-link{
+    color: rgb(57, 111, 204);
+    text-decoration: underline;
+    font-size: 1.5rem;
+}
+
+
+
+@media screen and (max-width: 520px) {
+    #address-additional-input {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: left;
+        margin-top: 10px;
+        padding: 0;
+        row-gap: 5px;
+    }
+
+    .address-input-field {
+        width: 85%;
+    }
+    #state-register {
+        width: 40%;
+    }
+
+    #postcode-input {
+        width: 36%;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    .signup-page {
+        width: 390px;
+    }
+}
+
+
