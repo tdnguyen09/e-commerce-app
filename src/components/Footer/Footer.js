@@ -15,14 +15,13 @@ function Footer () {
         <div className="footer">
             <div id="footer-top">
                 <h3>Join Our Newletter</h3>
-                <NavLink to="/sign-up" id="subscribe-button">Subscribe</NavLink>
+                <NavLink to="/signup" id="subscribe-button">Subscribe</NavLink>
             </div>
             <div id="footer-middle">
                 <div id="footer-middle-left">
-                    <NavLink to="policies/shipping-policy" className="policies-text">Shipping Policy</NavLink>
-                    <NavLink to="policies/refund-policy" className="policies-text">Refund Policy</NavLink>
-                    <NavLink to="policies/term-of-service" className="policies-text">Terms of Service</NavLink>
-                    <NavLink to="policies/privacy-policy" className="policies-text">Privacy Policy</NavLink>
+                    <NavLink to="/refund-policy" className="policies-text">Refund Policy</NavLink>
+                    <NavLink to="/term-of-service" className="policies-text">Terms of Service</NavLink>
+                    <NavLink to="/privacy-policy" className="policies-text">Privacy Policy</NavLink>
                 </div>
                 <div id="footer-middle-right">
                     <a href="https://www.instagram.com/" target="_blank">
