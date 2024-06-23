@@ -1,5 +1,6 @@
 import React from "react";
 import './Login.css'
+import { Link } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login () {
     return (
@@ -21,7 +22,7 @@ function Login () {
             </form>
             <p className="join-suggestion">
                 Don't have an account?
-                <a href="">  Join today</a>
+                <span><Link to="/signup">Join today</Link></span>
             </p>
         </div>
     )

@@ -1,48 +1,55 @@
-.login-page {
-    border: solid 5px black;
+/*login-page*/
+.login-page{
     text-align: center;
-    max-width: 600px;
-    min-width: 200px;
-    margin:  100px auto;
-    padding-top: 30px;
-}
-h2{
-    margin-bottom: 10px;
-}
-#login-form {
-    padding: 25px 50px;
+    margin: 30px auto;
+    padding-top: 20px;
     display: flex;
     flex-direction: column;
-    line-height: 2.5;
-    font-size: 20px;
-}
-label, a {
-    text-align: left;
-}
-#show-password-container {
-    display: inline-flex;
-    align-items: center;
-}
-#show-password-container input {
-    margin-right: 10px;
-}
-button {
-    background-color: rgb(251, 239, 69);
-    border-radius: 5px;
-    font-size: 20px;
-    margin-top: 20px;
-}
-a {
-    text-decoration: none;
-    font-size: 15px;
-    color: rgb(43, 43, 242);
+    max-width: 600px;
+    min-width: 390px;
 }
 
-@media screen and (max-width: 390px) {
-   .login-page{
-        width: 390px;
-   }
-   .fill-input{
-    border: 1px solid black;
-   }
+/*form-section*/
+#login-form{
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    padding: 20px 50px;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    max-width: 80%;
+    min-width: 70%;
+}
+
+label, a, #show-password-container{
+    text-align: left;
+}
+
+form button{
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    background-color: rgb(225, 222, 222);
+    font-size: 1.5rem;
+}
+
+.fill-input {
+    border-radius: 5px;
+    border: solid 2px black;
+    height: 30px;
+    box-sizing: border-box;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+#show-password-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 5px;
+}
+
+span {
+    margin-left: 5px;
+    
 }
