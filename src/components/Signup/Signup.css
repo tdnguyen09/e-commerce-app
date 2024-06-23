@@ -59,7 +59,7 @@ form {
     width: 20%;
 }
 
-button {
+#btn-register {
     background-color: rgb(225, 222, 222);
     width: 65%;
     padding: 10px;

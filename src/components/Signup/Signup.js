@@ -50,7 +50,7 @@ function Signup() {
                     </select>
                     <input type="text" id="postcode-input" placeholder="Postcode" className="address-input-field" required />
                 </div>
-                <button type="submit">CREATE ACCOUNT</button>
+                <button id="btn-register" type="submit">CREATE ACCOUNT</button>
             </form>
             <p>
                 Already have an account? 
