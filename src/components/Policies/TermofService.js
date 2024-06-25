@@ -3,7 +3,7 @@ import "./Policies.css";
 
 function TermOfService(){
     return (
-        <div>
+        <div className="policies">
             <h1>Term of Service</h1>
             <h3>OVERVIEW</h3>
                 <p>By visiting our site and purchasing something from us, you engage in our “Service” and agree to be bound by the following terms and conditions (“Terms of Service”, “Terms”), including those additional terms and conditions and policies referenced herein and available by hyperlink. These Terms of Service apply to all users of the site, including without limitation users who are browsers, vendors, customers, merchants, and contributors of content.</p>

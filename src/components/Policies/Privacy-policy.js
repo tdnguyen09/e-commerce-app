@@ -3,7 +3,7 @@ import "./Policies.css";
 
 function PrivacyPolicy() {
     return (
-        <div>
+        <div className="policies">
             <h1>Privacy Policy</h1>
                 <p>This Privacy Policy describes how kpopmerch.com (the “Site” or “we”) collects, uses, and discloses your Personal Information when you visit or make a purchase from the Site.</p>
             <h3>Collecting Personal Information</h3>
