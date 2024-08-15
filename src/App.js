@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Login from "./components/Login/Login";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "./components/NavBar/NavBar";
@@ -12,21 +12,44 @@ import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ProductList from "./components/ProductList/ProductList";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
 import { Provider } from "./components/WebContext";
+import Admin from "./components/Admin/Admin";
+import Logout from "./components/Logout/Logout";
+import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
+import AddProduct from "./components/AddProduct/AddProduct";
+import UpdateProduct from "./components/UpdateProduct/UpdateProduct";
+import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
 
 
 
 function App() {
+  const [user, setUser] = useState(null)
+
+  
+  useEffect(() => {
+    fetch('http://127.0.0.1:5000/checksession').then((response) => {
+      if(response.ok) {
+        response.json().then(user => {
+          console.log(user.message)
+          setUser(user)})
+      }
+    })
+  },[])
+// console.log(user)
   return (
     <div className="App">
       <Provider>
-        <NavBar />
+        <NavBar user={user} />
         <Switch>
           <Route path='/shopping-cart'>
             <ShoppingCart />
           </Route>
-          <Route path="/login">
-            <Login />
+          {user ? 
+          <Route path="/logout">
+            <Logout setUser={setUser} user={user} />
           </Route>
+          :<Route path="/login">
+            <Login setUser={setUser}/>
+          </Route>}
           <Route path="/signup">
             <Signup />
           </Route>
@@ -38,6 +61,21 @@ function App() {
           </Route>
           <Route path="/privacy-policy">
             <PrivacyPolicy />
+          </Route>
+          <Route path='/admin'>
+            <Admin />
+          </Route>
+          <Route path='/admin-dashboard'>
+            <AdminDashboard />
+          </Route>
+          <Route path='/add-new-product'>
+            <AddProduct />
+          </Route>
+          <Route path='/update-product/:id'>
+            <UpdateProduct />
+          </Route>
+          <Route path='/delete-product'>
+            <DeleteProduct />
           </Route>
           <Route path="/products/:id">
             <ProductDetails />
