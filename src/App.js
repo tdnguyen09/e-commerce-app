@@ -18,23 +18,26 @@ import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
 import AddProduct from "./components/AddProduct/AddProduct";
 import UpdateProduct from "./components/UpdateProduct/UpdateProduct";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
+import Checkout from "./components/Checkout/Checkout";
+import Wishlist from "./components/Wishlist/Wishlist";
 
 
 
 function App() {
   const [user, setUser] = useState(null)
-
+  const [wishlistItems, setWishlistItems] = useState([])
   
   useEffect(() => {
     fetch('http://127.0.0.1:5000/checksession').then((response) => {
       if(response.ok) {
         response.json().then(user => {
-          console.log(user.message)
-          setUser(user)})
+          setUser(user)
+          setWishlistItems(wishlistItems)
+        })
       }
     })
   },[])
-// console.log(user)
+  
   return (
     <div className="App">
       <Provider>
@@ -43,15 +46,21 @@ function App() {
           <Route path='/shopping-cart'>
             <ShoppingCart />
           </Route>
+          <Route path="/checkout">
+            <Checkout user={user} />
+          </Route>
           {user ? 
           <Route path="/logout">
             <Logout setUser={setUser} user={user} />
           </Route>
           :<Route path="/login">
-            <Login setUser={setUser}/>
+            <Login setUser={setUser} setWishlistItems={setWishlistItems}/>
           </Route>}
           <Route path="/signup">
             <Signup />
+          </Route>
+          <Route path='/wishlist'>
+            <Wishlist user={user} wishlistItems={wishlistItems} setWishlistItems={setWishlistItems} />
           </Route>
           <Route path='/refund-policy'>
             <RefundPolicy />
@@ -78,7 +87,7 @@ function App() {
             <DeleteProduct />
           </Route>
           <Route path="/products/:id">
-            <ProductDetails />
+            <ProductDetails user={user} setWishlistItems={setWishlistItems} wishlistItems={wishlistItems} />
           </Route>
           <Route exact path="/products">
             <ProductList />
