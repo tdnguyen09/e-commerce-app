@@ -28,7 +28,7 @@ function AddProduct() {
             [name]: value,
         })
     }
-
+    
     function handleCheckboxChange (e) {
         let name = e.target.name
         let checked = e.target.checked
@@ -37,19 +37,19 @@ function AddProduct() {
             [name]: checked,
         })
     }
-
     function handleSubmit(e) {
         e.preventDefault()
+        const finalDiscount = addProductForm.discount? addProductForm : '0'
         const productData = {
           name:addProductForm.productName,
           image:addProductForm.productImage,
           price:addProductForm.productPrice,
           description:addProductForm.productDescription,
           depth:addProductForm.productDepth,
-          weigth:addProductForm.productWeight,
+          weight:addProductForm.productWeight,
           height:addProductForm.productHeight,
           width:addProductForm.productWidth,
-          discount:addProductForm.discount,
+          discount:finalDiscount,
           new: checkbox.newProduct,
           clearance: checkbox.clearanceProduct,
           sale: checkbox.saleProduct
