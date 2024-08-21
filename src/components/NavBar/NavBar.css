@@ -26,9 +26,13 @@
 .icon:hover {
     border: 0.5px rgb(47, 47, 48) solid;
 }
+
 .navbar-middle {
+    display: flex;
+    flex-direction: column;
     min-width: 50%;
-    min-height: 30px;
+}
+.navbar-middle-top {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -36,20 +40,63 @@
     border: solid 1px black;
     padding: 2px;
 }
-.navbar-middle :first-child:hover{
+.navbar-middle-top :first-child:hover{
     border: none;
     cursor: pointer;
 }
-.navbar-middle input{
-    min-width: 85%;
+.navbar-middle-top input{
+    min-width: 95%;
     min-height: 2em;
     font-size: 15px;
     border: none;
 }
-.navbar-middle input:focus{
+.navbar-middle-top input:focus{
     outline: none;
     border: none;
 }
+
+/*Search container */
+.search-result-container {
+    border: 0.5px rgb(1, 1, 1) solid;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    position: absolute;
+    z-index: 1000;
+    flex-wrap: wrap;
+    width: 50%;
+    max-height: 300px;
+    overflow-y: scroll;
+    top: 45px;
+    background-color: rgb(251, 251, 251);
+    box-sizing: border-box;
+    justify-items: center;
+    padding: 10px;
+}
+
+.search-item a {
+    width: 85%;
+    display: flex;
+    flex-direction: row;
+    row-gap: 5px;
+    text-decoration: none;
+    align-items: center;
+}
+
+.search-item h4 {
+    font-size: 0.9rem;
+}
+
+.search-item p {
+    font-size: 0.75rem;
+}
+
+.search-item img {
+    width: 40% ;
+    height: 40%;
+}
+
+
+
 
 #navbar2 {
     display: flex;
@@ -64,9 +111,6 @@
 .navbar-section{
     font-size: 1.25rem;
     color: black;
-}
-.navbar-section:hover {
-    border-bottom: 0.5px solid black;
 }
 
 @media screen and (max-width: 390px) {
@@ -89,6 +133,11 @@
     .navbar-middle{
         grid-area: middle;
     }
+    .search-result-container{
+        width: 390px;
+        top: 77px;
+    }
+
     .navbar-right{
         grid-area: right;
     }
