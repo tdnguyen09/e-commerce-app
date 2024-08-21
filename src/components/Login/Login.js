@@ -4,7 +4,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
 
-function Login ({ setUser }) {
+function Login ({ setUser, setWishlistItems }) {
     const [passwordVisible, setPasswordVisible] = useState(false)
     const history = useHistory()
     const [formLogin, setFromLogin] = useState({
@@ -30,6 +30,7 @@ function Login ({ setUser }) {
 
         fetch("http://127.0.0.1:5000/login", {
             method:"POST",
+            credentials: 'include',
             headers: {
                 "Content-Type": "application/json",
             },
@@ -44,7 +45,7 @@ function Login ({ setUser }) {
         })
         .then(loginData => {
             setUser(loginData)
-            console.log(loginData)})
+            setWishlistItems(loginData.products)})
         
         setFromLogin({
             email:"",
