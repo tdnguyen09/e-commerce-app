@@ -1,0 +1,114 @@
+#product-details{
+    display: flex;
+    flex-direction: column;
+    max-width: 100%; 
+    margin: auto;
+}
+
+#main-details{
+    width: 80%;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    padding: 10px;
+    column-gap: 20px;
+}
+#product-image-detail{
+    width: 60%;
+    padding-top: 10px;
+    text-align: center;
+
+}
+#product-image-detail img {
+    width: 100%;
+}
+
+aside {
+    width: 40%;
+    padding: 20px;
+    line-height: 50px;
+}
+aside p {
+    margin-top: 40px;
+    margin-bottom: 40px;
+    font-size: 3rem;
+    font-weight: 900;
+}
+aside button {
+    font-size: 1rem;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    padding: 5px;
+    margin-top: 20px;
+    font-weight: 700;
+}
+aside button:hover{
+    cursor: pointer;
+    background-color: rgb(61, 255, 245);
+    color: rgb(0, 0, 0);
+}
+.cart-btn-quantity{
+    width: 10%;
+}
+aside span {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.cart-btn {
+    margin-left: 25px;
+    margin-right: 10px;
+}
+#discount-price{
+    font-size: 1.5rem;
+    color: black;
+    background-color: rgb(252, 252, 5);
+    border: 1px solid black;
+    border-radius: 5%;
+    width: fit-content;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#additional-details-product{
+    padding: 10px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    line-height: 25px;
+}
+#additional-details-product p {
+    width: 95%;
+    font-size: 1.5rem;
+}
+table{
+    border: solid 1px black;
+    width: 80%;
+    text-align: left;
+}
+td {
+    font-size: 1.5rem;
+}
+
+
+@media screen and (max-width: 915px) {
+    #main-details{
+        display: flex;
+        flex-direction: column;
+    }
+    #product-image-detail{
+        width: 80%;
+        margin: auto;
+    }
+    aside {
+        width: 80%;
+        margin: auto;
+    }
+    .cart-btn{
+        margin-left: 5px;
+    }
+}
