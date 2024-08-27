@@ -1,17 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import "./Logout.css"
 
 function Logout ({ setUser, user }) {
     const history = useHistory()
-    const [userUpdate, setUserUpdate] = useState({});
+
 
     function handleChange(e){
         let name = e.target.name
         let value = e.target.value
-        // setUserUpdate({
-        //     ...userUpdate,
-        //     [name]: value
-        // })
         setUser({
             ...user,
             [name]:value
@@ -43,7 +40,6 @@ function Logout ({ setUser, user }) {
             if(res.status === 204){
                 setUser(null)
                 history.push('/login')
-                // return res.json()
             } else {
                 console.error('failed to log out')
             }
@@ -52,9 +48,9 @@ function Logout ({ setUser, user }) {
         .catch(error => console.error('Error:', error))
     }
     return (
-        <div>
-            <h2>Welcome {user.firstname} {user.lastname} </h2>
-            <div className="update-details">   
+        <div id="update-page">
+            <h2>Hello, {user.firstname} {user.lastname} </h2>
+            <div id="update-details">   
                 <div className="update-user-container">
                     <label for='update-firstname'>Fristname</label>
                     <input type="text" id="update-firstname" name="firstname" className="update-user-field" defaultValue={user.firstname} onChange={handleChange} value={user.firstname} />
@@ -69,30 +65,34 @@ function Logout ({ setUser, user }) {
                 </div>
                 <div className="update-user-container">
                     <label for='update-phone'>Phone</label>
-                    <input type="text" id="update-phone" name="phone" className="update-user-field" defaultValue={user.phone} onChange={handleChange} value={user.phone} />
+                    <input type="text" id="update-phone" name="phone" className="update-user-field" defaultValue={user.phonenumber} onChange={handleChange} value={user.phone} />
                 </div>
                 <div className="update-user-container">
                     <label for='update-address'>Address</label>
                     <input type="text" id="update-address" name="address" className="update-user-field" defaultValue={user.address} onChange={handleChange} value={user.address} />
                 </div>
-                <div className="update-user-container">
+                <div className="update-user-container" id="update-user-additional-address">
                     <label for='update-suburd'>Suburb/City</label>
-                    <input type="text" id="update-suburb" name="suburb" defaultValue={user.suburb} onChange={handleChange} value={user.suburb} />
-                    <select id="update-state" name="state" defaultValue={user.state} onChange={handleChange} value={user.state}>
-                        <option value='ACT'>ACT</option>
-                        <option value='NSW'>NSW</option>
-                        <option value='NT'>NT</option>
-                        <option value='QLD'>QLD</option>
-                        <option value='SA'>SA</option>
-                        <option value='TAS'>TAS</option>
-                        <option value='VIC'>VIC</option>
-                        <option value='WA'>WA</option>
-                    </select>
-                    <input type="text" id="update-postcode" name="postcode" defaultValue={user.postcode} onChange={handleChange} value={user.postcode} placeholder="postcode" />
+                    <div id="other-info-wrapper">
+                        <input type="text" id="update-suburb" name="suburb" defaultValue={user.suburb} onChange={handleChange} value={user.suburb} />
+                        <select id="update-state" name="state" defaultValue={user.state} onChange={handleChange} value={user.state}>
+                            <option value='ACT'>ACT</option>
+                            <option value='NSW'>NSW</option>
+                            <option value='NT'>NT</option>
+                            <option value='QLD'>QLD</option>
+                            <option value='SA'>SA</option>
+                            <option value='TAS'>TAS</option>
+                            <option value='VIC'>VIC</option>
+                            <option value='WA'>WA</option>
+                        </select>
+                        <input type="text" id="update-postcode" name="postcode" defaultValue={user.postcode} onChange={handleChange} value={user.postcode} placeholder="postcode" />
+                    </div>
                 </div>
-                <button onClick={() => handleUpdate()}>Update</button>
             </div>
-            <button onClick={handleLogout}>Logout</button> 
+            <div id="button-container-logout">
+                <button onClick={() => handleUpdate()}>Update</button>
+                <button onClick={handleLogout}>Logout</button> 
+            </div>
         </div>
     )
 }
