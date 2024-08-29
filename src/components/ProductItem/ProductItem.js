@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom";
 
-function ProductItem({ image, name, price, clearance, onsale, id, discount }){
+function ProductItem({ image, name, price, clearance, id, onsale, discount }){
     return (
             <Link to={`/products/${id}`}  style={{ textDecoration: 'none' }}>
                 <img src={image} alt="product-name" />

@@ -68,6 +68,10 @@ function ProductDetails ({ user, setWishlistItems }) {
                 <p>{displayProduct.description}</p>
                 <table>
                     <tr>
+                        <td><strong>Brand</strong></td>
+                        <td>{displayProduct.brand}</td>
+                    </tr>
+                    <tr>
                         <td><strong>Product Depth:</strong> </td>
                         <td>{displayProduct.product_depth} cm</td>
                     </tr>
