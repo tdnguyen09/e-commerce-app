@@ -1,46 +1,48 @@
 import React, { useContext } from "react";
 import { WebContext } from "../WebContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import deleteIcon from './delete-icon.svg'
+import './ShoppingCart.css'
 
-
-function ShoppingCart () {
+function ShoppingCart ({ user }) {
     const context = useContext(WebContext)
     let totalCartQuantity = context.totalQuantity()
 
-    // function totalCost () {
-    //     let total = 0;
-    //     context.cartItems.map(item => {
-    //         total += (item.price * item.quantity)
-    //     })
-    //     return total.toFixed(2)
-    // }
-
     return (
-        <div className="shopping-cart">
+        <div id="shopping-cart-page">
             <h2>Your Shopping Cart</h2>
             {totalCartQuantity > 0 ?
-            <table>
-                <tr>
-                    <th>Prodcuts</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
+            <div id="shopping-cart-items">
                 {context.cartItems.map((item) => (
-                    <tr key={item.id}>
-                        <td>
-                            {item.name}
-                            <button onClick={() => context.addToCart(item.id)}>+</button>
-                            <button onClick={() => context.removeOneFromCart(item.id)}>-</button>
-                        </td>
-                        <td>${item.price}</td>
-                        <td>{item.quantity}</td>
-                    </tr>
+                    <div key={item.id} className="cart-item-container">
+                        <img src={item.image} alt={item.name} />
+                        <div className="cart-item-wrapper">
+                            <p>{item.name}</p>
+                            <p>${item.price}</p>
+                            <div>
+                                <button className="cart-btns" onClick={() => context.removeOneFromCart(item.id)}>-</button>
+                                <span>{item.quantity}</span>
+                                <button className="cart-btns" onClick={() => context.addToCart(item.id)}>+</button>
+                            </div>
+                            <button className="shopping-remove-btn" onClick={() => context.removeFromCart(item.id)}><img src={deleteIcon} alt="delete-icon" /></button>
+                        </div>
+                    </div>
                 ))}
-            </table>
-            : <p>There is no item in the cart</p>
+            </div>
+            : <p style={{ fontSize: '20px', marginTop:'10px'}}>There is no item in the cart</p>
             }
-            <p>Total: ${context.totalCost()}</p>
-            <Link to="/checkout"><button>Check out</button></Link>
+            <p style={{ fontWeight:'700', fontSize: '25px', marginTop:'20px'}}>Total: ${context.totalCost()}</p>
+            {user? <Link to="/checkout">
+                    <button style={{ 
+                        width:'150px', 
+                        height:'30px', 
+                        fontSize:'20px', 
+                        borderRadius:'5px', 
+                        backgroundColor:'blue', 
+                        color:'white',
+                        cursor:'pointer'}}
+                    >Check out
+                    </button></Link> : null}
         </div>
     )
 }
