@@ -36,16 +36,15 @@ aside p {
 }
 aside button {
     font-size: 1rem;
-    background-color: rgb(255, 255, 255);
+    background-color:rgb(228, 227, 227);
     border-radius: 3px;
     padding: 5px;
     margin-top: 20px;
     font-weight: 700;
+    cursor: pointer;
 }
 aside button:hover{
-    cursor: pointer;
-    background-color: rgb(61, 255, 245);
-    color: rgb(0, 0, 0);
+    background-color: rgba(203, 202, 202, 0.789);
 }
 .cart-btn-quantity{
     width: 10%;

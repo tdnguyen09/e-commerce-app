@@ -7,13 +7,17 @@ import wishlist from "./wishlist.svg";
 import searchIcon from "./search.png";
 import { WebContext } from "../WebContext";
 import ProductItem from "../ProductItem/ProductItem";
+import logoutIcon from "./logout.svg"
 
-function NavBar({ user }) {
+function NavBar({ user, wishlistItems }) {
     const context = useContext(WebContext);
     const [inputSearch, setInputSearch] = useState('');
     const [isVisible, setIsVisible] = useState(false)
     // const inputRef = useRef(null);
     // const searchResultRef = useRef(null);
+    console.log(wishlistItems)
+
+    const totalItemWishlist = wishlistItems.length
 
     function handleFocus () {
         setIsVisible(true);
@@ -25,6 +29,8 @@ function NavBar({ user }) {
             setInputSearch('')
         }, 200)
     }
+
+   
     
 
     // function handleResultClicked (result) {
@@ -70,7 +76,7 @@ function NavBar({ user }) {
         <div className="navbar">
             <div id="navbar1">
                 <div className="navbar-left">
-                    <NavLink to="/">Shop</NavLink>
+                    <NavLink to="/">ATOK Shop</NavLink>
                 </div>
                 <div className="navbar-middle">
                     <div className="navbar-middle-top">
@@ -97,32 +103,36 @@ function NavBar({ user }) {
                                 image={searchProduct.image}
                                 name={searchProduct.name}
                                 price={searchProduct.price}
-                                clearance={searchProduct.clearance ? <p>Save ${searchProduct.discount}</p> : null} />
+                                clearance={searchProduct.is_it_clearance}
+                                onsale={searchProduct.is_it_onsale}
+                                discount={searchProduct.discount} />
                             </div>
                         ))}
                     </div>
                     )}
                 </div>
                 <div className="navbar-right">
-                    <NavLink to="/shopping-cart">
-                        <img src={shoppingCart} alt="shopping-cart" className="icon"/>
-                    </NavLink>
                     { user ? 
-                    <NavLink to='logout'>
-                        LG
+                    <NavLink to='/logout'>
+                        <img src={logoutIcon} alt="logout" className="icon" />
                     </NavLink>
                     :<NavLink to="/login">
                         <img src={userLogo} alt="user-logo" className="icon"/>
                     </NavLink>
                     }
+                    <NavLink to="/shopping-cart">
+                        <img src={shoppingCart} alt="shopping-cart" className="icon"/>
+                        <p>{context.totalQuantity()}</p>
+                    </NavLink>
                     <NavLink to="/wishlist">
                         <img src={wishlist} alt="wishlist" className="icon"/>
+                        {user && <p>{totalItemWishlist}</p>}
                     </NavLink>
                 </div>
             </div>
             <div id="navbar2">
-                <NavLink to="/products" className="navbar-section">Shop</NavLink>
-                <NavLink to="/categoris" className="navbar-section">Categoris</NavLink>
+                <NavLink to="/products" className="navbar-section">All Products</NavLink>
+                <NavLink to="/categoris" className="navbar-section">Categories</NavLink>
                 <NavLink to="/preorders" className="navbar-section">Pre-Orders</NavLink>
                 <NavLink to="/onsale" className="navbar-section">Sale</NavLink>
                 <NavLink to="/clearance" className="navbar-section">Clearance</NavLink>
