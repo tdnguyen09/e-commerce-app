@@ -15,7 +15,6 @@ function NavBar({ user, wishlistItems }) {
     const [isVisible, setIsVisible] = useState(false)
     // const inputRef = useRef(null);
     // const searchResultRef = useRef(null);
-    console.log(wishlistItems)
 
     const totalItemWishlist = wishlistItems.length
 
