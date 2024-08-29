@@ -15,21 +15,21 @@
     align-content: stretch;
     justify-content: center;
 }
-#product-wishlist-container {
+.product-wishlist-container {
     width: 300px;
     text-align: center;
 }
 
-#product-wishlist-container img{
+.product-wishlist-container img{
     width: 200px;
 }
-#product-wishlist-container div {
+.product-wishlist-container div {
     width: 200px;
     height: 100px;
     margin: auto;
 }
 
-#product-wishlist-container h4 {
+.product-wishlist-container h4 {
     font-size: 16px;
     display: -webkit-box;
         line-clamp: 2; 
@@ -42,16 +42,16 @@
     margin: 5px auto;
     text-align: center;
 }
-#product-wishlist-container p {
+.product-wishlist-container p {
     font-weight: 700;
     font-size: 1.5rem;
     display: inline-block
 }
-#product-wishlist-container span {
+.product-wishlist-container span {
     margin-left: 20px;
 }
 
-#product-wishlist-container button {
+.product-wishlist-container button {
     padding: 2px;
     cursor: pointer;
     margin-bottom: 20px;

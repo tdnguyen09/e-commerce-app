@@ -28,20 +28,21 @@ function Wishlist ({ user, wishlistItems, setWishlistItems }) {
             {user ?
             <section id="wishlist-products">
                 {wishlistItems.map(product => (
-                    <div id="product-wishlist-container"  key={product.id}>
+                    <div className="product-wishlist-container">
                         <ProductItem
-                        id={product.id}
-                        image={product.image}
-                        name={product.name}
-                        price={product.price}
-                        onsale={product.is_it_onsale}
-                        clearance={product.is_it_clearance}
-                        discount={product.discount} />
+                            key={product.id}
+                            id={product.id}
+                            image={product.image}
+                            name={product.name}
+                            price={product.price}
+                            onsale={product.is_it_onsale}
+                            clearance={product.is_it_clearance}
+                            discount={product.discount}/>
                         <button onClick={() => remove(product.id)}>Remove From Wishlist</button>
                     </div>
                 ))}
             </section>
-            : <p>You need to login to see the wishlist</p>
+            : <p style={{textAlign:'center', marginTop:'20px', marginBottom:'20px'}}>You need to login to see the wishlist</p>
             }
         </div>
     )

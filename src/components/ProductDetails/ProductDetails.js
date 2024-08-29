@@ -3,8 +3,9 @@ import { WebContext } from "../WebContext";
 import { useParams } from "react-router-dom/cjs/react-router-dom";
 import './ProductDetails.css'
 
-function ProductDetails ({ user, setWishlistItems }) {
+function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
     const [displayProduct, setDisplayProduct] = useState('');
+    const [isItemInWishlist, setIsItemInWishlist] = useState(false);
     const { id } = useParams()
     const context = useContext(WebContext)
     const productQuantity = context.getItemQuantity(displayProduct.id)
@@ -12,7 +13,15 @@ function ProductDetails ({ user, setWishlistItems }) {
     useEffect(() => {
         fetch(`http://127.0.0.1:5000/products/${id}`)
         .then(res => res.json())
-        .then(data => setDisplayProduct(data))
+        .then(data => {
+            console.log(data)
+            setDisplayProduct(data)
+            const inWishlist = wishlistItems.some(product => 
+                product.id === data.id && product.name === data.name)
+            if(inWishlist){
+                setIsItemInWishlist(true)
+            }
+        })
     },[id])
 
     function addToWishlist(id) {
@@ -31,6 +40,7 @@ function ProductDetails ({ user, setWishlistItems }) {
                 }
             })
             .then(() => {
+                setIsItemInWishlist(true)
                 setWishlistItems((prevItems) =>[
                     ...prevItems,
                     displayProduct]
@@ -40,7 +50,23 @@ function ProductDetails ({ user, setWishlistItems }) {
             alert('Please log in to able add to wishlist')
         }
     }
-    console.log(displayProduct)
+    function removeFromWishlist(id){
+        const user_id = user.id
+        fetch(`http://127.0.0.1:5000/products/${id}`,{
+            method:'DELETE',
+            headers:{
+                'Content-Type':'application/json',
+            },
+            body: JSON.stringify(user_id)
+        })
+        .then(res => res.json())
+        .then(() => {
+            const updateWishlist = wishlistItems.filter(item => item.id !== id)
+            setWishlistItems(updateWishlist)
+            setIsItemInWishlist(false)
+        })
+
+    }
     
     return (
         <div id="product-details">
@@ -61,7 +87,10 @@ function ProductDetails ({ user, setWishlistItems }) {
                         </div>
                         : <button className="cart-btn" onClick={() => context.addToCart(displayProduct.id)}>Add to Cart</button>
                     }
-                    <button onClick={() => addToWishlist(displayProduct.id)}>Add To Wishlist</button>
+                    {isItemInWishlist ?
+                        <button onClick={() => removeFromWishlist(displayProduct.id)}>❤️</button>
+                        :<button onClick={() => addToWishlist(displayProduct.id)}>🤍</button>
+                    }
                 </aside>
             </div>
             <div id="additional-details-product">
