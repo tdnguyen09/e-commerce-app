@@ -15,8 +15,8 @@ import { Provider } from "./components/WebContext";
 import Admin from "./components/Admin/Admin";
 import Logout from "./components/Logout/Logout";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
-import AddProduct from "./components/AddProduct/AddProduct";
-import UpdateProduct from "./components/UpdateProduct/UpdateProduct";
+import AddProduct from "./components/Add&UpdateProduct/AddProduct";
+import UpdateProduct from "./components/Add&UpdateProduct/UpdateProduct";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
 import Checkout from "./components/Checkout/Checkout";
 import Wishlist from "./components/Wishlist/Wishlist";
@@ -26,6 +26,8 @@ import Wishlist from "./components/Wishlist/Wishlist";
 function App() {
   const [user, setUser] = useState(null)
   const [wishlistItems, setWishlistItems] = useState([])
+
+
   
   useEffect(() => {
     fetch('http://127.0.0.1:5000/checksession').then((response) => {
@@ -41,10 +43,10 @@ function App() {
   return (
     <div className="App">
       <Provider>
-        <NavBar user={user} />
+        <NavBar user={user} wishlistItems={wishlistItems} />
         <Switch>
           <Route path='/shopping-cart'>
-            <ShoppingCart />
+            <ShoppingCart user={user}/>
           </Route>
           <Route path="/checkout">
             <Checkout user={user} />
@@ -57,7 +59,7 @@ function App() {
             <Login setUser={setUser} setWishlistItems={setWishlistItems}/>
           </Route>}
           <Route path="/signup">
-            <Signup />
+            <Signup user={user} setUser={setUser} />
           </Route>
           <Route path='/wishlist'>
             <Wishlist user={user} wishlistItems={wishlistItems} setWishlistItems={setWishlistItems} />
