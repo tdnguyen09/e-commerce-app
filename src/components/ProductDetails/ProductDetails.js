@@ -14,7 +14,6 @@ function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
         fetch(`http://127.0.0.1:5000/products/${id}`)
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             setDisplayProduct(data)
             const inWishlist = wishlistItems.some(product => 
                 product.id === data.id && product.name === data.name)

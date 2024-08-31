@@ -38,7 +38,6 @@ function Login ({ setUser, setWishlistItems }) {
         })
         .then(res => {
             if (res.status === 200) {
-                console.log('login successfully')
                 history.push('/logout')
             }
             return res.json()
