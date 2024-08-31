@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./Signup.css"
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import * as yup from "yup";
