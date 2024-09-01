@@ -1,0 +1,15 @@
+#admin-dashboard-page{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.nav-admin{
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+    margin-right: 20px;
+    font-size: 20px;
+}
+
+.nav-admin:hover{
+    border-bottom: 3px solid black;
+}

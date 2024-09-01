@@ -1,14 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import './AdminDashBoard.css'
 
-function AdminDashboard() {
+function AdminDashboard({ admin }) {
     return (
-        <div className="admin-dashboard-page">
-            <h1>Hello, </h1>
+        <div id="admin-dashboard-page">
+            <h1>Hello, {admin.username} </h1>
             <nav>
-                <Link to='/add-new-product'>Add New Product</Link>
-                <Link to='/update-product'>Update Product</Link>
-                <Link to='/delete-product'>Delete Product</Link>
+                <Link to='/add-new-product' className='nav-admin'>Add New Product</Link>
+                <Link to='/delete-product'className='nav-admin'>Update and Delete Product</Link>
             </nav>
         </div>
     )
