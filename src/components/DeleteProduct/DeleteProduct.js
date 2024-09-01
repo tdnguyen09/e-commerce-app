@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { WebContext } from "../WebContext";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import './DeleteProduct.css'
 
 function DeleteProduct() {
     const context = useContext(WebContext)
@@ -32,24 +33,26 @@ function DeleteProduct() {
 
     }
     return (
-        <div className="delete-product-page">
-            <input type="text" id="search-items" name="searchItem" onChange={handleChange} value={input}/>
-            <ul className="result">
+        <div id="delete-product-page">
+            <input placeholder="Search product" type="text" name="searchItem" onChange={handleChange} value={input}/>
+            <div id="result-to-show">
                 {items.filter((item => {
                     return input.toLowerCase() === '' 
                     ? item
                     : item.name.toLowerCase().includes(input)
                 })).map(item => (
-                    <div key={item.id}>
-                        {/* <img src={item.name} alt="image" /> */}
-                        <p>{item.name}</p>
-                        <p>${item.price}</p>
-                        <p>${item.discount}</p>
-                        <button><Link to={`/update-product/${item.id}`}>Update</Link></button>
-                        <button onClick={() => handleDetete(item.id)}>Delete</button>
+                    <div className="admin-page-item" key={item.id}>
+                        <img src={item.image} alt="image" />
+                        <div>
+                            <p><strong>{item.name}</strong></p>
+                            <p>Price: ${item.price}</p>
+                            <p>Discount: ${item.discount}</p>
+                            <Link to={`/update-product/${item.id}`}><button style={{width:'80px', textDecoration:'none', marginLeft:'20px', marginRight:'20px', cursor:'pointer'}}>Update</button></Link>
+                            <button style={{width:'80px', cursor:'pointer'}} onClick={() => handleDetete(item.id)}>Delete</button>
+                        </div>
                     </div>
                 ))}
-            </ul> 
+            </div> 
         </div>
     )
 }
