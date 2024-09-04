@@ -20,11 +20,13 @@ import UpdateProduct from "./components/Add&UpdateProduct/UpdateProduct";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
 import Checkout from "./components/Checkout/Checkout";
 import Wishlist from "./components/Wishlist/Wishlist";
+import Categories from "./components/Categories/Categories";
 
 
 
 function App() {
   const [user, setUser] = useState(null)
+  const [admin, setAdmin] =useState(null)
   const [wishlistItems, setWishlistItems] = useState([])
 
 
@@ -74,25 +76,36 @@ function App() {
             <PrivacyPolicy />
           </Route>
           <Route path='/admin'>
-            <Admin />
+            <Admin setAdmin={setAdmin}/>
           </Route>
+          {admin && (
           <Route path='/admin-dashboard'>
-            <AdminDashboard />
+            <AdminDashboard admin={admin}/>
           </Route>
-          <Route path='/add-new-product'>
-            <AddProduct />
-          </Route>
+          )}
+          {admin  && (
+            <Route path='/add-new-product'>
+              <AddProduct />
+            </Route>
+          )}
+          {admin && (
           <Route path='/update-product/:id'>
             <UpdateProduct />
           </Route>
+          )} 
+          {admin && (    
           <Route path='/delete-product'>
             <DeleteProduct />
           </Route>
+          )}
           <Route path="/products/:id">
             <ProductDetails user={user} setWishlistItems={setWishlistItems} wishlistItems={wishlistItems} />
           </Route>
           <Route exact path="/products">
             <ProductList />
+          </Route>
+          <Route path='/categories'>
+            <Categories />
           </Route>
           <Route exact path="/">
             <Home />
