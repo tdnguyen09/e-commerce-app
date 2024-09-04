@@ -217,9 +217,15 @@ function AddProduct() {
                     <label htmlFor='brand'>Brand</label>
                     <select name="brand" id="brand" className="selection" onChange={formik.handleChange} value={formik.values.brand}>
                         <option>Select brand</option>
+                        <option value='barbie'>Barbie</option>
+                        <option value='disney'>Disney</option>
+                        <option value='fisher-price'>Fisher-Price</option>
+                        <option value='nerf'>Nerf</option>
+                        <option value='hot wheels'>Hot Wheels</option>
                         <option value='lego'>Lego</option>
                         <option value='pokemon'>Pokemon</option>
-                        <option value='hot wheels'>Hot Wheels</option>
+                        <option value='vtech'>VTech</option>
+                        <option value='others'>Others</option>
                     </select>
                 </div>
                 {formik.touched.brand && formik.errors.brand ? <p className="error-text">{formik.errors.brand}</p>:null}
@@ -229,9 +235,14 @@ function AddProduct() {
                         <option>Select category</option>
                         <option value='action figures'>Action Figures</option>
                         <option value='board games'>Board Games</option>
+                        <option value='build set'>Build Set</option>
                         <option value='dolls'>Dolls</option>
                         <option value='roleplay'>Roleplay</option>
-                        <option value='build set'>Build Set</option>
+                        <option value='preschool'>Pre-school</option>
+                        <option value='soft toy'>Soft Toy</option>
+                        <option value='outdoor'>Ourdoor</option>
+                        <option value='vehicles'>Vehicles</option>
+                        <option value='others'>Others</option>
                     </select>
                 </div>
                     {formik.touched.category && formik.errors.category ? <p className="error-text">{formik.errors.category}</p>:null}
