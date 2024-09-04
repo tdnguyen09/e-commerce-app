@@ -6,6 +6,7 @@ import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 function Login ({ setUser, setWishlistItems }) {
     const [passwordVisible, setPasswordVisible] = useState(false)
+    const [loginError, setLoginError] = useState('')
     const history = useHistory()
     const [formLogin, setFromLogin] = useState({
         email:"",
@@ -37,14 +38,22 @@ function Login ({ setUser, setWishlistItems }) {
             body: JSON.stringify(loginData),
         })
         .then(res => {
-            if (res.status === 200) {
-                history.push('/logout')
+            if (!res.ok) {
+                return res.json().then(data => {
+                    setLoginError(data.error)
+                    throw new Error(data.error)
+                })
             }
             return res.json()
         })
         .then(loginData => {
+            setLoginError('')
             setUser(loginData)
-            setWishlistItems(loginData.products)})
+            setWishlistItems(loginData.products)
+            history.push('/logout')})
+        .catch(error => {
+            console.error("Error during login:", error);
+        });
         
         setFromLogin({
             email:"",
@@ -71,6 +80,7 @@ function Login ({ setUser, setWishlistItems }) {
                     <label for="show-password">Show password</label>
                 </div>
                 <a href="">Forgot password</a>
+                {loginError && <p style={{color:'red', marginTop:'10px', fontSize:'15px'}}>{loginError}</p>}
                 <button type="submit">Login</button>                  
             </form>
             <p className="join-suggestion">
@@ -81,4 +91,4 @@ function Login ({ setUser, setWishlistItems }) {
     )
 }
 
-export default Login
+export default Login;
