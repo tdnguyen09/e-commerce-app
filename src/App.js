@@ -21,6 +21,7 @@ import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
 import Checkout from "./components/Checkout/Checkout";
 import Wishlist from "./components/Wishlist/Wishlist";
 import Categories from "./components/Categories/Categories";
+import Preorder from "./components/ProductList/Preorder";
 
 
 
@@ -106,6 +107,9 @@ function App() {
           </Route>
           <Route path='/categories'>
             <Categories />
+          </Route>
+          <Route path='/preorders'>
+            <Preorder />
           </Route>
           <Route exact path="/">
             <Home />

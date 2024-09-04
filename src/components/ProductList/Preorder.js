@@ -1,36 +1,39 @@
 import React, { useContext, useEffect, useState } from "react";
-import { WebContext } from "../WebContext";
-import ProductItem from "../ProductItem/ProductItem";
-import './ProductList.css'
 import Filter from "../Filter/Filter";
+import { WebContext } from "../WebContext";
 import usePagination from "../Pagination/usePagination";
+import ProductItem from "../ProductItem/ProductItem";
 import Pagination from "../Pagination/Pagination";
+import './ProductList.css'
 
-function ProductList() {
+
+function Preorder() {
     const context = useContext(WebContext);
     const products = context.allProducts || [];
-    const [sortedProducts, setSortProducts] = useState([])
-    const { currentProducts, totalPages, currentPage, paginate } = usePagination(sortedProducts)
-
+    const preOrderProducts = products.filter(product => product.is_it_preorder === true)
+    const [sortedPreorder, setSortedPreorder] = useState(preOrderProducts);
+    const { currentProducts, totalPages, currentPage, paginate } = usePagination(sortedPreorder);
+    
     useEffect(() => {
-        setSortProducts(products)
+        setSortedPreorder(preOrderProducts)
     },[products])
 
+    
+
     function handleFilter(filtered) {
-        setSortProducts(filtered)
+        setSortedPreorder(filtered)
     }
 
     return (
         <div className="products">
-            <h1>All Products</h1>
+            <h1>Pre-Order Products</h1>
             <div>
-                <Filter products={products} onFilter={handleFilter}/>
+                <Filter products={preOrderProducts} onFilter={handleFilter} />
             </div>
             <div className="product-list">
                 {currentProducts.map(product => (
-                    <div className="product-container">
+                    <div className="product-container" key={product.id}>
                         <ProductItem
-                            key={product.id}
                             id={product.id}
                             image={product.image}
                             name={product.name}
@@ -38,17 +41,17 @@ function ProductList() {
                             clearance={product.is_it_clearance}
                             onsale= {product.is_it_onsale}
                             discount={product.discount}
-                         />
+                        />
                     </div>
                 ))}
             </div>
-            <Pagination 
+            <Pagination
                 totalPages={totalPages}
                 currentPage={currentPage}
-                onPageChange={paginate} 
+                onPageChange={paginate}
             />
         </div>
     )
 }
 
-export default ProductList;
+export default Preorder;
