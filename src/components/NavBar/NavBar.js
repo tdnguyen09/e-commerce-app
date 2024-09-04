@@ -131,10 +131,9 @@ function NavBar({ user, wishlistItems }) {
             </div>
             <div id="navbar2">
                 <NavLink to="/products" className="navbar-section">All Products</NavLink>
-                <NavLink to="/categoris" className="navbar-section">Categories</NavLink>
+                <NavLink to="/categories" className="navbar-section">Categories</NavLink>
                 <NavLink to="/preorders" className="navbar-section">Pre-Orders</NavLink>
-                <NavLink to="/onsale" className="navbar-section">Sale</NavLink>
-                <NavLink to="/clearance" className="navbar-section">Clearance</NavLink>
+                <NavLink to="/sale-clearance" className="navbar-section">Sale/Clearance</NavLink>
             </div>
         </div>
     )
