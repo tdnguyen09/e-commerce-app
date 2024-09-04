@@ -4,8 +4,6 @@ const WebContext = React.createContext()
 
 function Provider({ children }){
     const [datas, setDatas] = useState([]);
-    const [isLogin, setIsLogin] = useState(false);
-    const [username, setUsername] = useState('')
     const [cartItems, setCartItems] = useState([]);
 
 //fetching data
@@ -84,33 +82,20 @@ function Provider({ children }){
         return total.toFixed(2)
     }
 
-// functions for login and logout
 
-    function login(username){
-        setIsLogin(true);
-        setUsername(username);
-    }
 
-    function logout() {
-        setIsLogin(false);
-        setUsername('')
-    }
 
 //context Value
 
     const contextValue = {
         cartItems: cartItems,
         allProducts: datas,
-        isLogin: isLogin,
-        username: username,
         getItemQuantity, 
         addToCart,
         removeFromCart,
         removeOneFromCart,
         totalQuantity,
-        deleteCart,
-        login,
-        logout, 
+        deleteCart, 
         totalCost
     }
 
