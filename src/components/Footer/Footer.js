@@ -9,6 +9,7 @@ import paypal from "./logos/paypal.svg";
 import instagram from "./logos/instagram.svg";
 import facebook from "./logos/facebook.svg";
 import twitter from "./logos/x.svg";
+import { Link } from "react-router-dom/cjs/react-router-dom";
 
 function Footer () {
     return (
@@ -41,6 +42,15 @@ function Footer () {
                 <img src={mastercard} alt="mastercard" className="pay-icon"/>
                 <img src={paypal} alt="paypal" className="pay-icon"/>
                 <img src={applepay} alt="applepay" className="pay-icon"/>
+                <Link to='/admin' style={{
+                    textDecoration:'none', 
+                    marginLeft:'auto', 
+                    marginRight: '20px', 
+                    border:'solid 1px black', 
+                    padding:'5px', 
+                    background:'rgb(186, 185, 185)',
+                    color:'black'}}
+                >Admin mode</Link>
             </div>
         </div>
     )
