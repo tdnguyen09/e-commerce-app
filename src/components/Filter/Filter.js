@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import './Filter.css'
-import { printValue } from "yup";
 
 
 function Filter({ products, onFilter }) {
