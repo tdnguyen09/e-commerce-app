@@ -30,9 +30,6 @@ function Category () {
         setSelectedProducts(filtered)
     }
 
-    console.log(activeTab)
-    console.log(selectedProducts)
-    console.log(activePage)
     return (
         <div className="products">
             <h1>Shoy by Categories</h1>
