@@ -10,8 +10,8 @@ import './ProductList.css'
 function Preorder() {
     const context = useContext(WebContext);
     const products = context.allProducts || [];
-    const preOrderProducts = products.filter(product => product.is_it_preorder === true)
-    const [sortedPreorder, setSortedPreorder] = useState(preOrderProducts);
+    const preOrderProducts = products.filter(product => product.is_it_preorder === true);
+    const [sortedPreorder, setSortedPreorder] = useState([]);
     const { currentProducts, totalPages, currentPage, paginate } = usePagination(sortedPreorder);
     
     useEffect(() => {
