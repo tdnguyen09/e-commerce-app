@@ -26,6 +26,22 @@ function ProductList() {
             <div>
                 <Filter products={products} onFilter={handleFilter}/>
             </div>
+            {/* <div>
+                <label htmlFor="categories">Categories</label>
+                <select>
+                    <option>Select category</option>
+                    <option value='action figures'>Action Figures</option>
+                    <option value='board games'>Board Games</option>
+                    <option value='build set'>Build Set</option>
+                    <option value='dolls'>Dolls</option>
+                    <option value='roleplay'>Roleplay</option>
+                    <option value='preschool'>Pre-school</option>
+                    <option value='soft toy'>Soft Toy</option>
+                    <option value='outdoor'>Ourdoor</option>
+                    <option value='vehicles'>Vehicles</option>
+                    <option value='others'>Others</option>
+                </select>
+            </div> */}
             <div className="product-list">
                 {currentProducts.map(product => (
                     <div className="product-container">

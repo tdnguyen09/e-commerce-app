@@ -1,0 +1,46 @@
+
+.tab-nav{
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.tab-nav button {
+    margin-right: 20px;
+    margin-top: 15px;
+    margin-bottom: 20px;
+    width: 15%;
+    height: 5vw;
+    border: solid 1px black;
+    border-radius: 10px;
+    font-size: 2vw;
+    text-align: center;
+    display: inline-block;
+    cursor: pointer;
+    background-color: rgb(54, 238, 248);
+    font-weight: 700;
+}
+
+.tab-content{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    row-gap: 10px;
+    width: 85%;
+    margin: auto;
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 390px) {
+    .tab-nav, .tab-content{
+        width: 380px;
+        margin: auto;
+    }
+    
+}

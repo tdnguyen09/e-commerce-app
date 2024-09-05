@@ -20,8 +20,8 @@ import UpdateProduct from "./components/Add&UpdateProduct/UpdateProduct";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
 import Checkout from "./components/Checkout/Checkout";
 import Wishlist from "./components/Wishlist/Wishlist";
-import Categories from "./components/Categories/Categories";
 import Preorder from "./components/ProductList/Preorder";
+import Category from "./components/Categories/Categories";
 
 
 
@@ -106,7 +106,7 @@ function App() {
             <ProductList />
           </Route>
           <Route path='/categories'>
-            <Categories />
+            <Category />
           </Route>
           <Route path='/preorders'>
             <Preorder />

@@ -1,9 +1,9 @@
-#products{
+.products{
     max-width: 1500px;
     margin: auto;
 }
 
-#products h1{
+.products h1{
     margin: 50px auto;
     background-color: rgb(217, 211, 211);
 }
@@ -58,4 +58,10 @@
 }
 .product-container span {
     margin-left: 20px;
+}
+
+@media screen and (max-width: 390px) {
+    .products{
+        width: 390px;
+    }
 }
