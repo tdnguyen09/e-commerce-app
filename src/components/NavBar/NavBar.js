@@ -133,7 +133,7 @@ function NavBar({ user, wishlistItems }) {
                 <NavLink to="/products" className="navbar-section">All Products</NavLink>
                 <NavLink to="/categories" className="navbar-section">Categories</NavLink>
                 <NavLink to="/preorders" className="navbar-section">Pre-Orders</NavLink>
-                <NavLink to="/sale-clearance" className="navbar-section">Sale/Clearance</NavLink>
+                <NavLink to="/clearance" className="navbar-section">Clearance</NavLink>
             </div>
         </div>
     )
