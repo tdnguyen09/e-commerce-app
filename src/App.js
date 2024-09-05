@@ -22,6 +22,7 @@ import Checkout from "./components/Checkout/Checkout";
 import Wishlist from "./components/Wishlist/Wishlist";
 import Preorder from "./components/ProductList/Preorder";
 import Category from "./components/Categories/Categories";
+import Clearance from "./components/ProductList/Clearance";
 
 
 
@@ -110,6 +111,9 @@ function App() {
           </Route>
           <Route path='/preorders'>
             <Preorder />
+          </Route>
+          <Route path='/clearance'>
+            <Clearance />
           </Route>
           <Route exact path="/">
             <Home />
