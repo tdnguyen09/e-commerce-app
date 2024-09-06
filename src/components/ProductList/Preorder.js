@@ -18,8 +18,6 @@ function Preorder() {
         setSortedPreorder(preOrderProducts)
     },[products])
 
-    
-
     function handleFilter(filtered) {
         setSortedPreorder(filtered)
     }
