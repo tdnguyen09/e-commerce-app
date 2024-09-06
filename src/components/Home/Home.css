@@ -1,0 +1,44 @@
+#home-page{
+    max-width: 1500px;
+}
+
+.background-container{
+    margin: auto;
+    position: relative;
+    width: 80%;
+    height: 50vh;
+    background-size: cover;
+    background-position: center; 
+    animation: backgroundChange 20s linear 0s infinite alternate;
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+@keyframes backgroundChange {
+    0%{
+        background-image: url('barbie1.jpg');
+        opacity: 1;
+    }
+    33% {
+        background-image: url('disney1.avif');
+        opacity: 1;
+    }
+    66% {
+        background-image: url('lego3.webp');
+        opacity: 1;
+    }
+    100% {
+        background-image: url('pawpatrol1.jpg');
+        opacity: 1;
+    }
+}
+
+.background-container p {
+    background-color: #fbffd7; 
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    color: black;
+}
