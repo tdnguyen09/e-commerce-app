@@ -1,5 +1,5 @@
 import { useFormik } from "formik";
-import React, { useState } from "react";
+import React from "react";
 import * as yup from "yup";
 import './Add&UpdateProduct.css'
 
@@ -58,101 +58,6 @@ function AddProduct() {
             .then(data => console.log(data))
         }
     })
-
-
-
-    // const [addProductForm, setAddProductForm] = useState({
-    //     productName:'',
-    //     productImage:'',
-    //     productPrice:'',
-    //     productDescription:'',
-    //     productDepth:'',
-    //     productWeight:'',
-    //     productHeight:'',
-    //     productWidth:'',
-    //     discount:'',
-    //     brand:'',
-    //     category:''
-    // })
-    // const [checkbox, setCheckbox] = useState({
-    //     newProduct: false,
-    //     clearanceProduct: false,
-    //     saleProduct:false,
-    //     preorder: false
-    // })
-
-    // function handleChange(event) {
-    //     let name = event.target.name
-    //     let value = event.target.value
-
-    //     setAddProductForm  ({
-    //         ...addProductForm,
-    //         [name]: value,
-    //     })
-    // }
-    
-    // function handleCheckboxChange (e) {
-    //     let name = e.target.name
-    //     let checked = e.target.checked
-    //     setCheckbox({
-    //         ...checkbox,
-    //         [name]: checked,
-    //     })
-    // }
-    // function handleSubmit(e) {
-    //     e.preventDefault()
-    //     const finalDiscount = addProductForm.discount? addProductForm.discount : '0'
-
-    //     const productData = {
-    //       name:addProductForm.productName,
-    //       image:addProductForm.productImage,
-    //       price:addProductForm.productPrice,
-    //       description:addProductForm.productDescription,
-    //       depth:addProductForm.productDepth,
-    //       weight:addProductForm.productWeight,
-    //       height:addProductForm.productHeight,
-    //       width:addProductForm.productWidth,
-    //       discount:finalDiscount,
-    //       brand:addProductForm.brand,
-    //       category:addProductForm.category,
-    //       new: checkbox.newProduct,
-    //       clearance: checkbox.clearanceProduct,
-    //       sale: checkbox.saleProduct,
-    //       preorder: checkbox.preorder,
-    //     }
-    //     fetch("http://127.0.0.1:5000/dashboard", {
-    //         method:"POST",
-    //         headers: {
-    //             "Content-Type": "application/json",
-    //         },
-    //         body: JSON.stringify(productData),
-    //     })
-    //         .then( res => {
-    //             if (res.status === 200) {
-    //                 console.log('successfully')
-    //             }
-    //             return res.json()
-    //         })
-    //         .then(productData => console.log(productData))
-            
-    //         setAddProductForm({
-    //             productName:'',
-    //             productImage:'',
-    //             productPrice:'',
-    //             productDescription:'',
-    //             productDepth:'',
-    //             productWeight:'',
-    //             productHeight:'',
-    //             productWidth:'',
-    //             discount:''
-    //         })
-    //         setCheckbox({
-    //             newProduct: false,
-    //             clearanceProduct: false,
-    //             saleProduct:false,
-    //             preorder:false
-    //         })
-    // }
    
     return (
         <div id="add-product-page">

@@ -9,6 +9,7 @@
 }
 #navbar1 {
     display: flex;
+    width: 100%;
     flex-direction: row;
     justify-content:space-evenly;  
     align-items: center;  
@@ -44,9 +45,10 @@
 }
 
 .navbar-middle {
+    border: solid 1x green;
     display: flex;
     flex-direction: column;
-    min-width: 50%;
+    width: 50%;
 }
 .navbar-middle-top {
     display: flex;
@@ -61,7 +63,7 @@
     cursor: pointer;
 }
 .navbar-middle-top input{
-    min-width: 95%;
+    width: 90%;
     min-height: 2em;
     font-size: 15px;
     border: none;
@@ -148,6 +150,7 @@
     }
     .navbar-middle{
         grid-area: middle;
+        width: 390px;
     }
     .search-result-container{
         width: 390px;
@@ -157,10 +160,11 @@
     .navbar-right{
         grid-area: right;
     }
-    .navbar-middle input {
-        width: 90%;
-    }
     .navbar-section{
         font-size: 15px;
     }
+    /* .navbar-middle-top input{
+        width: 380px;
+        margin: auto;
+    } */
 }
