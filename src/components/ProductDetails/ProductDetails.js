@@ -11,7 +11,7 @@ function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
     const productQuantity = context.getItemQuantity(displayProduct.id)
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000/products/${id}`)
+        fetch(`https://final-project-database.onrender.com/products/${id}`)
         .then(res => res.json())
         .then(data => {
             setDisplayProduct(data)
@@ -26,7 +26,7 @@ function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
     function addToWishlist(id) {
         if (user){
             const user_id = user.id
-            fetch(`http://127.0.0.1:5000/products/${id}`,{
+            fetch(`https://final-project-database.onrender.com/products/${id}`,{
                 method:'POST',
                 headers:{
                     'Content-Type':'application/json',
@@ -51,7 +51,7 @@ function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
     }
     function removeFromWishlist(id){
         const user_id = user.id
-        fetch(`http://127.0.0.1:5000/products/${id}`,{
+        fetch(`https://final-project-database.onrender.com/products/${id}`,{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',

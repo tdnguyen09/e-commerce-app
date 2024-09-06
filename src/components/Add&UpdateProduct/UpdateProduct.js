@@ -7,7 +7,7 @@ function UpdateProduct() {
     const [product, setProduct] = useState({}); 
 
     useEffect(() => {
-        fetch(`http://127.0.0.1:5000/products/${id}`)
+        fetch(`https://final-project-database.onrender.com/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     },[id])
@@ -26,7 +26,7 @@ function UpdateProduct() {
     console.log(product.brand)
     console.log(product.category)
     function handleUpdate(){
-        fetch(`http://127.0.0.1:5000/products/${id}`,{
+        fetch(`https://final-project-database.onrender.com/products/${id}`,{
             method: 'PATCH',
             headers: {
                 'Content-Type':'application/json',

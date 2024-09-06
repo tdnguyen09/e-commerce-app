@@ -16,7 +16,7 @@ function Logout ({ setUser, user }) {
     }
 
     function handleUpdate(){
-        fetch('http://127.0.0.1:5000/update-detail',{
+        fetch('https://final-project-database.onrender.com/update-detail',{
             method:'PATCH',
             headers: {
                 'Content-Type':'application/json',
@@ -34,7 +34,7 @@ function Logout ({ setUser, user }) {
     }
 
     function handleLogout() {
-        fetch('http://127.0.0.1:5000/logout', {
+        fetch('https://final-project-database.onrender.com/logout', {
             method: 'DELETE',
         }).then (res =>{
             if(res.status === 204){

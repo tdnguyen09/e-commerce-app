@@ -8,7 +8,7 @@ function Provider({ children }){
 
 //fetching data
     useEffect(() => {
-        fetch("http://127.0.0.1:5000/products")
+        fetch("https://final-project-database.onrender.com/products")
         .then(res => res.json())
         .then(products => {
             setDatas(products)

@@ -26,7 +26,7 @@ function Admin({ setAdmin }){
             username: formAdmin.usernameAdmin,
             password: formAdmin.passwordAdmin
         }
-        fetch('http://127.0.0.1:5000/admin/login', {
+        fetch('https://final-project-database.onrender.com/admin/login', {
             method:'POST',
             headers: {
                 'Content-Type':'application/json'

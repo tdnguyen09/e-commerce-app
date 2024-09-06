@@ -47,7 +47,7 @@ function AddProduct() {
         },
         validationSchema: formSchema,
         onSubmit: (values) => {
-            fetch('http://127.0.0.1:5000/dashboard',{
+            fetch('https://final-project-database.onrender.com/dashboard',{
                 method:'POST',
                 headers: {
                     'Content-Type':'application/json'

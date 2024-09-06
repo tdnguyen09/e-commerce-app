@@ -18,7 +18,7 @@ function DeleteProduct() {
     }
 
     function handleDetete(index){
-        fetch('http://127.0.0.1:5000/dashboard',{
+        fetch('https://final-project-database.onrender.com/dashboard',{
             method:'DELETE',
             headers:{
                 'Content-Type':'application/json',

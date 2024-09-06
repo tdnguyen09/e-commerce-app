@@ -29,7 +29,7 @@ function Login ({ setUser, setWishlistItems }) {
             password: formLogin.password
         }
 
-        fetch("http://127.0.0.1:5000/login", {
+        fetch("https://final-project-database.onrender.com/login", {
             method:"POST",
             credentials: 'include',
             headers: {
