@@ -8,7 +8,11 @@ import { useFormik } from "formik";
 function Signup({ setUser }) {
     const history = useHistory()
     function checkEmail(email) {
-        return fetch(`https://final-project-database.onrender.com/checkemail?email=${encodeURIComponent(email)}`)
+        return fetch(`https://final-project-database.onrender.com/checkemail?email=${encodeURIComponent(email)}`,{
+            method:'GET',
+            credentials:'include',
+        })
+        // return fetch(`http://127.0.0.1:5000/checkemail?email=${encodeURIComponent(email)}`)
         .then(res => res.json())
         .then(data => {
             return data.available
@@ -69,7 +73,9 @@ function Signup({ setUser }) {
         onSubmit: (values) => {
             const { confirmPassword, ...dataToSend } = values
             fetch("https://final-project-database.onrender.com/signup",{
+            // fetch("http://127.0.0.1:5000/signup",{
                 method: 'POST',
+                credentials:'include',
                 headers: {
                     'Content-Type':'application/json'
                 },

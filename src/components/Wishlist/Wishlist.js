@@ -8,7 +8,9 @@ function Wishlist ({ user, wishlistItems, setWishlistItems }) {
     function remove(id){
         const user_id = user.id
         fetch(`https://final-project-database.onrender.com/products/${id}`,{
+        // fetch(`http://127.0.0.1:5000/products/${id}`,{
             method:'DELETE',
+            credentials:'include',
             headers:{
                 'Content-Type':'application/json',
             },

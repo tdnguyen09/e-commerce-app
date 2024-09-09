@@ -23,6 +23,7 @@ import Wishlist from "./components/Wishlist/Wishlist";
 import Preorder from "./components/ProductList/Preorder";
 import Category from "./components/Categories/Categories";
 import Clearance from "./components/ProductList/Clearance";
+import OrderHistory from "./components/Logout/OrderHistory";
 
 
 
@@ -34,7 +35,12 @@ function App() {
 
   
   useEffect(() => {
-    fetch('https://final-project-database.onrender.com/checksession').then((response) => {
+    fetch('https://final-project-database.onrender.com/checksession',{
+      method:'GET',
+      credentials:'include',
+    })
+    .then((response) => {
+    // fetch('http://127.0.0.1:5000/checksession').then((response) => {
       if(response.ok) {
         response.json().then(user => {
           setUser(user)
@@ -42,7 +48,7 @@ function App() {
         })
       }
     })
-  },[])
+  },[wishlistItems])
   
   return (
     <div className="App">
@@ -62,6 +68,11 @@ function App() {
           :<Route path="/login">
             <Login setUser={setUser} setWishlistItems={setWishlistItems}/>
           </Route>}
+          {user? 
+          <Route path="/order-history">
+            <OrderHistory user={user} />
+          </Route> : null
+          }
           <Route path="/signup">
             <Signup user={user} setUser={setUser} />
           </Route>

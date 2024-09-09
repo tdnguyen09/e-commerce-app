@@ -8,12 +8,16 @@ function Provider({ children }){
 
 //fetching data
     useEffect(() => {
-        fetch("https://final-project-database.onrender.com/products")
+        fetch("https://final-project-database.onrender.com/products",{
+            method:'GET',
+            credentials:'include',
+        })
+        // fetch(" http://127.0.0.1:5000/products")
         .then(res => res.json())
         .then(products => {
             setDatas(products)
         })
-    }, [])
+    }, [datas])
 //functions for carts
     function getItemQuantity(index) {
         const item = cartItems.find(item => item.id === index)
@@ -96,7 +100,7 @@ function Provider({ children }){
         removeOneFromCart,
         totalQuantity,
         deleteCart, 
-        totalCost
+        totalCost,
     }
 
     return (

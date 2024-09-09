@@ -19,7 +19,9 @@ function Checkout({ user }) {
             orderDate: new Date().toISOString()
         }
         fetch("https://final-project-database.onrender.com/checkout",{
+        // fetch("http://127.0.0.1:5000/checkout",{
             method: 'POST',
+            credentials:'include',
             headers: {
                 'Content-Type': 'application/json',
             },
@@ -33,6 +35,7 @@ function Checkout({ user }) {
             setIsOrderSubmit(true)
             setTimeout(() => {
                 setIsOrderSubmit(false);
+                context.deleteCart()
                 history.push('/')
             }, 5000);
         })  

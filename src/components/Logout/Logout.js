@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Logout.css"
 
 function Logout ({ setUser, user }) {
@@ -17,7 +17,9 @@ function Logout ({ setUser, user }) {
 
     function handleUpdate(){
         fetch('https://final-project-database.onrender.com/update-detail',{
+        // fetch('http://127.0.0.1:5000/update-detail',{
             method:'PATCH',
+            credentials:'include',
             headers: {
                 'Content-Type':'application/json',
             },
@@ -35,7 +37,9 @@ function Logout ({ setUser, user }) {
 
     function handleLogout() {
         fetch('https://final-project-database.onrender.com/logout', {
+        // fetch('http://127.0.0.1:5000/logout', {
             method: 'DELETE',
+            credentials:'include',
         }).then (res =>{
             if(res.status === 204){
                 setUser(null)
@@ -90,8 +94,9 @@ function Logout ({ setUser, user }) {
                 </div>
             </div>
             <div id="button-container-logout">
+                <button><Link to='/order-history' style={{textDecoration:'none', color:'white'}}>Order History</Link></button>
                 <button onClick={() => handleUpdate()}>Update</button>
-                <button onClick={handleLogout}>Logout</button> 
+                <button onClick={handleLogout}>Logout</button>
             </div>
         </div>
     )

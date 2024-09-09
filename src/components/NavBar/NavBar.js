@@ -63,7 +63,7 @@ function NavBar({ user, wishlistItems }) {
             inputSearch &&
             product &&
             product.name &&
-            product.name.toLowerCase().includes(inputSearch)
+            product.name.toLowerCase().includes(inputSearch.trim().toLowerCase())
         )
     }) 
 

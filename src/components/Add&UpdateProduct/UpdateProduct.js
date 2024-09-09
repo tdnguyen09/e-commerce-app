@@ -7,7 +7,11 @@ function UpdateProduct() {
     const [product, setProduct] = useState({}); 
 
     useEffect(() => {
-        fetch(`https://final-project-database.onrender.com/products/${id}`)
+        fetch(`https://final-project-database.onrender.com/products/${id}`,{
+            method:'GET',
+            credentials:'include',
+        })
+        // fetch(`http://127.0.0.1:5000/products/${id}`)
         .then(res => res.json())
         .then(data => setProduct(data))
     },[id])
@@ -27,7 +31,9 @@ function UpdateProduct() {
     console.log(product.category)
     function handleUpdate(){
         fetch(`https://final-project-database.onrender.com/products/${id}`,{
+        // fetch(`http://127.0.0.1:5000/products/${id}`,{
             method: 'PATCH',
+            credentials:'include',
             headers: {
                 'Content-Type':'application/json',
             },
