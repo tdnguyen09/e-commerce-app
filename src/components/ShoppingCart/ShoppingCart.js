@@ -22,7 +22,7 @@ function ShoppingCart ({ user }) {
                             <div>
                                 <button className="cart-btns" onClick={() => context.removeOneFromCart(item.id)}>-</button>
                                 <span>{item.quantity}</span>
-                                <button className="cart-btns" onClick={() => context.addToCart(item.id)}>+</button>
+                                <button className="cart-btns" onClick={() => context.addItemToCart(item.id)}>+</button>
                             </div>
                             <button className="shopping-remove-btn" onClick={() => context.removeFromCart(item.id)}><img src={deleteIcon} alt="delete-icon" /></button>
                         </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Login from "./components/Login/Login";
 import { Route, Switch } from "react-router-dom/cjs/react-router-dom.min";
 import NavBar from "./components/NavBar/NavBar";
@@ -11,7 +11,7 @@ import PrivacyPolicy from "./components/Policies/Privacy-policy";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 import ProductList from "./components/ProductList/ProductList";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
-import { Provider } from "./components/WebContext";
+import { Provider, WebContext } from "./components/WebContext";
 import Admin from "./components/Admin/Admin";
 import Logout from "./components/Logout/Logout";
 import AdminDashboard from "./components/AdminDashboard/AdminDashboard";
@@ -24,23 +24,25 @@ import Preorder from "./components/ProductList/Preorder";
 import Category from "./components/Categories/Categories";
 import Clearance from "./components/ProductList/Clearance";
 import OrderHistory from "./components/Logout/OrderHistory";
+import { Elements } from '@stripe/react-stripe-js';
+import { loadStripe } from '@stripe/stripe-js'
 
+const stripePromise = loadStripe('pk_test_51PzFRpGa8Ef09n6h7efQUJBNIY4QElqHRnhooFVQnON2QHuWUT44vWXu45Y9YfclkAwRjfJR1uZe6RplYqG5gtcQ00sjbKatCq')
 
 
 function App() {
   const [user, setUser] = useState(null)
   const [admin, setAdmin] =useState(null)
-  const [wishlistItems, setWishlistItems] = useState([])
-
-
+  const [wishlistItems, setWishlistItems] = useState([]);
+  
   
   useEffect(() => {
-    fetch('https://final-project-database.onrender.com/checksession',{
-      method:'GET',
-      credentials:'include',
-    })
-    .then((response) => {
-    // fetch('http://127.0.0.1:5000/checksession').then((response) => {
+    // fetch('https://final-project-database.onrender.com/checksession',{
+    //   method:'GET',
+    //   credentials:'include',
+    // })
+    // .then((response) => {
+    fetch('http://127.0.0.1:5000/checksession').then((response) => {
       if(response.ok) {
         response.json().then(user => {
           setUser(user)
@@ -49,17 +51,18 @@ function App() {
       }
     })
   },[wishlistItems])
-  
   return (
     <div className="App">
-      <Provider>
+      <Provider userLoginID={user ? user.id : null} user={user}>
         <NavBar user={user} wishlistItems={wishlistItems} />
         <Switch>
           <Route path='/shopping-cart'>
             <ShoppingCart user={user}/>
           </Route>
           <Route path="/checkout">
-            <Checkout user={user} />
+            <Elements stripe={stripePromise}>
+              <Checkout user={user} />
+            </Elements>
           </Route>
           {user ? 
           <Route path="/logout">
