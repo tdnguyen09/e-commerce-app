@@ -2,14 +2,21 @@ import React, { useContext, useState } from "react";
 import { WebContext } from "../WebContext";
 import './Checkout.css'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import CheckoutForm from "./CheckoutForm";
 
 
 function Checkout({ user }) {
     const context = useContext(WebContext)
     const [isOrderSubmit, setIsOrderSubmit] = useState(false);
+    const [isPaymentSuccessful, setIsPaymentSuccessful] = useState(false);
     const history = useHistory()
     let orderItems = context.cartItems
     let total = context.totalCost()
+    const amountInCent = Math.round(total*100);
+
+    function handlePaymentSuccess () {
+        setIsPaymentSuccessful(true)
+    }
 
     function handleClick() {
         const orderDetail = {
@@ -18,8 +25,8 @@ function Checkout({ user }) {
             total:total,
             orderDate: new Date().toISOString()
         }
-        fetch("https://final-project-database.onrender.com/checkout",{
-        // fetch("http://127.0.0.1:5000/checkout",{
+        // fetch("https://final-project-database.onrender.com/checkout",{
+        fetch("http://127.0.0.1:5000/checkout",{
             method: 'POST',
             credentials:'include',
             headers: {
@@ -63,9 +70,15 @@ function Checkout({ user }) {
                     <p style={{fontSize:'17px'}}>Address: {user.address}, {user.suburb}, {user.state} {user.postcode}</p>
                     <p style={{fontSize:'17px'}}> Phone: {user.phonenumber}</p>
                 </div>
+                <CheckoutForm onPaymentSuccess={handlePaymentSuccess} amount={amountInCent} />
+                {isPaymentSuccessful ? (
+                    <p>Payment success, please submit your order</p>
+                ) : (
+                    <p>Please complete the payment</p>
+                )}
                 <button 
-                    onClick={() => handleClick()}
-                    style={{width:'150px', height:'40px', fontSize:'15px', backgroundColor:'blue', color:'white', fontWeight:'700', padding:'5px', cursor:'pointer'}}
+                    onClick={() => handleClick()} disabled={!isPaymentSuccessful}
+                    style={{width:'150px', height:'40px', fontSize:'15px', backgroundColor: isPaymentSuccessful ? 'blue' : 'grey', color:'white', fontWeight:'700', padding:'5px', cursor: isPaymentSuccessful ? 'pointer' : 'not-allowed', borderRadius:'5px'}}
                 >
                     Submit Order
                 </button>
