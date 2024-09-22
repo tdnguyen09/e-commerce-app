@@ -8,11 +8,11 @@ function Provider({ children, userLoginID }){
 
 //fetching data
     useEffect(() => {
-        // fetch("https://final-project-database.onrender.com/products",{
-        //     method:'GET',
-        //     credentials:'include',
-        // })
-        fetch(" http://127.0.0.1:5000/products")
+        fetch("https://final-project-database.onrender.com/products",{
+            method:'GET',
+            credentials:'include',
+        })
+        // fetch(" http://127.0.0.1:5000/products")
         .then(res => res.json())
         .then(products => {
             setDatas(products)
@@ -67,7 +67,8 @@ function Provider({ children, userLoginID }){
             console.log(`update:${quantity}`)
             console.log(`updated: ${updatedQuantity}`)
 
-            fetch(`http://127.0.0.1:5000/products/${index}/cart`, {
+            // fetch(`http://127.0.0.1:5000/products/${index}/cart`, {
+            fetch(`https://final-project-database.onrender.com/products/${index}/cart`, {
                 method: 'POST',
                 credentials: 'include',
                 headers: {
@@ -97,7 +98,8 @@ function Provider({ children, userLoginID }){
     function removeFromCart (index) {
         const updatedCartItems = cartItems.filter( item => item.id !== index);
         if (userLoginID){
-            fetch(`http://127.0.0.1:5000/products/${index}/cart`,{
+            // fetch(`http://127.0.0.1:5000/products/${index}/cart`,{
+            fetch(`https://final-project-database.onrender.com/products/${index}/cart`,{
                 method:'DELETE',
                 credentials:'include',
                 headers:{
@@ -127,7 +129,8 @@ function Provider({ children, userLoginID }){
             removeFromCart(index)
         } else {
             if (userLoginID){
-                fetch(`http://127.0.0.1:5000/products/${index}/cart`,{
+                // fetch(`http://127.0.0.1:5000/products/${index}/cart`,{
+                fetch(`https://final-project-database.onrender.com/${index}/cart`,{
                 method:'POST',
                 credentials:'include',
                 headers:{

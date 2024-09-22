@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom/cjs/react-router-dom.min";
+import { useHistory, useParams } from "react-router-dom/cjs/react-router-dom.min";
 import './Add&UpdateProduct.css'
 
 function UpdateProduct() {
     const { id } = useParams()
     const [product, setProduct] = useState({}); 
+    const history = useHistory()
 
     useEffect(() => {
         fetch(`https://final-project-database.onrender.com/products/${id}`,{
@@ -29,7 +30,8 @@ function UpdateProduct() {
     }
     console.log(product.brand)
     console.log(product.category)
-    function handleUpdate(){
+    function handleUpdate(e){
+        e.preventDefault()
         fetch(`https://final-project-database.onrender.com/products/${id}`,{
         // fetch(`http://127.0.0.1:5000/products/${id}`,{
             method: 'PATCH',
@@ -40,19 +42,23 @@ function UpdateProduct() {
             body: JSON.stringify(product)
         })
         .then(res => {
+            console.log('Response received:', res);
             if(res.ok) {
-                alert(' product successfully')
-                res.json()
+                return res.json()
             } else {
-                console.log(res.message)
+                throw new Error('fail to update')
             }
         })
-        .then(res => console.log(res))
+        .then(() => {
+            console.log('Processing second .then');
+            alert('Update successfully')
+            history.push('/delete-product')
+        })
     }
     console.log(product)
     return (
         <div id="product-update-page">
-            <form id="update-form">
+            <form id="update-form" type='submit' onSubmit={handleUpdate}>
                 <div className="product-detail-wrapper">
                     <label for='update-name'>Name</label>
                     <input type="text" id="update-name" name="name" className="product-field" defaultValue={product.name} onChange={handleChange} value={product.name}/>
@@ -131,7 +137,7 @@ function UpdateProduct() {
                         <option value='others'>Others</option>
                     </select>
                 </div>
-                <button className='add-update-btn' onClick={() => handleUpdate()}>Update</button>
+                <button className='add-update-btn'>Update</button>
             </form>
         </div>
     )

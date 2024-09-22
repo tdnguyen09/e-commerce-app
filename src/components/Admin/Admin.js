@@ -9,10 +9,19 @@ function Admin({ setAdmin }){
         usernameAdmin:'',
         passwordAdmin:''
     })
+    const [signupAdmin, setSignupAdmin] = useState({
+        usernameSignup:'',
+        passwordSignup:''
+    })
 
     function handleChange(event){
         let name = event.target.name
         let value = event.target.value
+
+        setSignupAdmin({
+            ...signupAdmin,
+            [name]:value,
+        })
 
         setFormAdmin ({
             ...formAdmin,
@@ -42,15 +51,44 @@ function Admin({ setAdmin }){
             history.push('/admin-dashboard')
         })
     }
+    function handleSignup(e){
+        e.preventDefault();
+        const userSignup = {
+            username: signupAdmin.usernameSignup,
+            password: signupAdmin.passwordSignup
+        }
+        // fetch('http://127.0.0.1:5000/admin', {
+        fetch('https://final-project-database.onrender.com/admin', {
+            method:'POST',
+            credentials:'include',
+            headers:{
+                'Content-Type':'application/json'
+            },
+            body: JSON.stringify(userSignup)
+        })
+        .then(res => res.json())
+        .then(data => {
+            setAdmin(data)
+            history.push('/admin-dashboard')
+        })
+    }
     return (
         <div id="admin-page">
             <h4>Admin login</h4>
             <form type='submit'onSubmit={handleSubmit}>
-                <label for='username-admin'><strong>Username</strong></label>
+                <label htmlFor='username-admin'><strong>Username</strong></label>
                 <input type='text' id="username-admin" name="usernameAdmin" value={formAdmin.usernameAdmin} onChange={handleChange} />
-                <label for='username-password'><strong>Password</strong></label>
+                <label htmlFor='username-password'><strong>Password</strong></label>
                 <input type="password" id="username-password" name="passwordAdmin" value={formAdmin.passwordAdmin} onChange={handleChange} />
                 <button>login</button>            
+            </form>
+            <h4>Signup admin</h4>
+            <form type='submit' onSubmit={handleSignup}>
+                <label htmlFor="username-sigup"><strong>Username</strong></label>
+                <input type="text" id="username-signup" name="usernameSignup" value={signupAdmin.usernameSignup} onChange={handleChange} />
+                <label htmlFor="password-sigup"><strong>Password</strong></label>
+                <input type="password" id="password-signup" name="passwordSignup" value={signupAdmin.passwordSignup} onChange={handleChange} />
+                <button>Sigup</button>
             </form>
         </div>
     )

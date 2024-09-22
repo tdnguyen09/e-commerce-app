@@ -1,9 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Logout.css"
+import { WebContext } from "../WebContext";
+import { ErrorMessage } from "formik";
 
 function Logout ({ setUser, user }) {
     const history = useHistory()
+    const context = useContext(WebContext);
+
 
 
     function handleChange(e){
@@ -27,12 +31,17 @@ function Logout ({ setUser, user }) {
         })
         .then(res => {
             if(res.ok) {
-                res.json()
+                return res.json()
             }else{
-                console.log(res.message)
+                return res.json().then(errorMessage => {
+                    throw new Error(errorMessage.error)
+                })
             }
         })
-        .then(res => console.log(res))
+        .then(() => alert('Update successfully'))
+        .catch(error => {
+            alert(error.message);  
+        });
     }
 
     function handleLogout() {
@@ -44,6 +53,7 @@ function Logout ({ setUser, user }) {
             if(res.status === 204){
                 setUser(null)
                 history.push('/login')
+                context.setCartItems([])
             } else {
                 console.error('failed to log out')
             }

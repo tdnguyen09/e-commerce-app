@@ -37,12 +37,12 @@ function App() {
   
   
   useEffect(() => {
-    // fetch('https://final-project-database.onrender.com/checksession',{
-    //   method:'GET',
-    //   credentials:'include',
-    // })
-    // .then((response) => {
-    fetch('http://127.0.0.1:5000/checksession').then((response) => {
+    fetch('https://final-project-database.onrender.com/checksession',{
+      method:'GET',
+      credentials:'include',
+    })
+    .then((response) => {
+    // fetch('http://127.0.0.1:5000/checksession').then((response) => {
       if(response.ok) {
         response.json().then(user => {
           setUser(user)

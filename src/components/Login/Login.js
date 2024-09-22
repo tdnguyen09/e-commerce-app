@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import './Login.css'
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { WebContext } from "../WebContext";
 
 
 
@@ -8,6 +9,7 @@ function Login ({ setUser, setWishlistItems }) {
     const [passwordVisible, setPasswordVisible] = useState(false)
     const [loginError, setLoginError] = useState('')
     const history = useHistory()
+    const context = useContext(WebContext)
     const [formLogin, setFromLogin] = useState({
         email:"",
         password:""
@@ -51,6 +53,7 @@ function Login ({ setUser, setWishlistItems }) {
             setLoginError('')
             setUser(loginData)
             setWishlistItems(loginData.products)
+            context.setCartItems(loginData.carts)
             history.push('/logout')})
         .catch(error => {
             console.error("Error during login:", error);

@@ -13,8 +13,6 @@ function NavBar({ user, wishlistItems }) {
     const context = useContext(WebContext);
     const [inputSearch, setInputSearch] = useState('');
     const [isVisible, setIsVisible] = useState(false)
-    // const inputRef = useRef(null);
-    // const searchResultRef = useRef(null);
 
     const totalItemWishlist = wishlistItems.length
 
@@ -29,34 +27,6 @@ function NavBar({ user, wishlistItems }) {
         }, 200)
     }
 
-   
-    
-
-    // function handleResultClicked (result) {
-    //     if (inputRef.current) {
-    //         inputRef.current.value = result
-    //     }
-    //     setIsVisible(false);
-    // }
-
-
-    // const handleClickOutside = (event) => {
-    //     if (
-    //         searchResultRef.current &&
-    //         !searchResultRef.current.contains(event.target) &&
-    //         inputRef.current &&
-    //         !inputRef.current.contains(event.target)
-    //     ) {
-    //         setIsVisible(false);
-    //     }
-    // };
-
-    // useEffect(() => {
-    //     document.addEventListener('mousedown', handleClickOutside);
-    //     return () => {
-    //         document.removeEventListener('mousedown', handleClickOutside);
-    //     };
-    // }, []);
 
     let searchResult = context.allProducts.filter(product => {
         return (
@@ -86,18 +56,17 @@ function NavBar({ user, wishlistItems }) {
                         id="search-input" 
                         onChange={handleSearchChange} 
                         value={inputSearch} 
-                        // ref={inputRef}
                         onFocus={handleFocus}
                         onBlur={handleBlur} />
                     </div>
                     { isVisible && (
                     <div 
                         className="search-result-container"
-                        // ref={searchResultRef}
                     >
                         {searchResult.map(searchProduct => (
-                            <div className="search-item" /*onClick={() => handleResultClicked()}*/>
+                            <div className="search-item">
                                 <ProductItem
+                                id={searchProduct.id}
                                 key={searchProduct.id}
                                 image={searchProduct.image}
                                 name={searchProduct.name}

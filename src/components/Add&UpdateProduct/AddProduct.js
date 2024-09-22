@@ -57,7 +57,7 @@ function AddProduct() {
                 body: JSON.stringify(values),
             })
             .then(res => res.json())
-            .then(data => console.log(data))
+            .then(() => alert('Add new product successfully'))
         }
     })
    

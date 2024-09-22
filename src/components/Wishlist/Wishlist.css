@@ -45,10 +45,11 @@
 .product-wishlist-container p {
     font-weight: 700;
     font-size: 1.5rem;
-    display: inline-block
+    display: inline-block;
+    width: 90%;
 }
 .product-wishlist-container span {
-    margin-left: 20px;
+    margin-left: 15px;
 }
 
 .product-wishlist-container button {

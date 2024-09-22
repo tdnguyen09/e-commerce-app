@@ -11,7 +11,8 @@ function CheckoutForm ({ onPaymentSuccess, amount }) {
         e.preventDefault();
         setLoaing(true)
 
-        fetch('http://127.0.0.1:5000/create-payment-intent',{
+        // fetch('http://127.0.0.1:5000/create-payment-intent',{
+        fetch('https://final-project-database.onrender.com/create-payment-intent',{
             method:'POST',
             headers:{
                 'Content-Type' : 'application/json'

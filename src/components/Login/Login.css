@@ -31,6 +31,7 @@ form button{
     margin-top: 20px;
     background-color: rgb(225, 222, 222);
     font-size: 1.5rem;
+    cursor: pointer;
 }
 
 .fill-input {
