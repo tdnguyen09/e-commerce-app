@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { Link, useHistory } from "react-router-dom/cjs/react-router-dom.min";
 import "./Logout.css"
 import { WebContext } from "../WebContext";
-import { ErrorMessage } from "formik";
+
 
 function Logout ({ setUser, user }) {
     const history = useHistory()

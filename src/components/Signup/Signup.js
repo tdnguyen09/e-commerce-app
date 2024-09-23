@@ -80,13 +80,10 @@ function Signup({ setUser }) {
                     'Content-Type':'application/json'
                 },
                 body:JSON.stringify(dataToSend),
-            }).then( res => {
-                if(res.ok) {
-                    history.push('/logout')
-                }
-                return res.json()
-            }).then (() => {
+            }).then( res => res.json() )
+            .then (() => {
                 setUser(values)
+                history.push('/logout')
             })
         }
     })

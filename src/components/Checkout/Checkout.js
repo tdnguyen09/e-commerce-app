@@ -25,8 +25,8 @@ function Checkout({ user }) {
             total:total,
             orderDate: new Date().toISOString()
         }
-        // fetch("https://final-project-database.onrender.com/checkout",{
-        fetch("http://127.0.0.1:5000/checkout",{
+        fetch("https://final-project-database.onrender.com/checkout",{
+        // fetch("http://127.0.0.1:5000/checkout",{
             method: 'POST',
             credentials:'include',
             headers: {

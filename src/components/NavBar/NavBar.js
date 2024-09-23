@@ -13,6 +13,7 @@ function NavBar({ user, wishlistItems }) {
     const context = useContext(WebContext);
     const [inputSearch, setInputSearch] = useState('');
     const [isVisible, setIsVisible] = useState(false)
+    console.log(context.allProducts)
 
     const totalItemWishlist = wishlistItems.length
 
@@ -26,7 +27,6 @@ function NavBar({ user, wishlistItems }) {
             setInputSearch('')
         }, 200)
     }
-
 
     let searchResult = context.allProducts.filter(product => {
         return (
