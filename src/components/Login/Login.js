@@ -76,14 +76,14 @@ function Login ({ setUser, setWishlistItems }) {
             <form id="login-form" onSubmit={handleSubmit}>
                 <label for="username"><strong>Username</strong></label>
                 <input className="fill-input" type="text" id="login-email" name="email" onChange={handleChange} value={formLogin.email} required /> 
-                <a href="">Forgot username</a>
+                {/* <a href="">Forgot username</a> */}
                 <label for='password'><strong>Password</strong></label>
                 <input className="fill-input" type={passwordVisible ? "text" : "password"} id="password" name="password" onChange={handleChange} value={formLogin.password} required />
                 <div id="show-password-container">
                     <input type="checkbox" name="show-password" id="show-password" onChange={showPassword} checked={passwordVisible}/>
                     <label for="show-password">Show password</label>
                 </div>
-                <a href="">Forgot password</a>
+                {/* <a href="">Forgot password</a> */}
                 {loginError && <p style={{color:'red', marginTop:'10px', fontSize:'15px'}}>{loginError}</p>}
                 <button type="submit">Login</button>                  
             </form>

@@ -80,7 +80,7 @@ function Admin({ setAdmin }){
                 <input type='text' id="username-admin" name="usernameAdmin" value={formAdmin.usernameAdmin} onChange={handleChange} />
                 <label htmlFor='username-password'><strong>Password</strong></label>
                 <input type="password" id="username-password" name="passwordAdmin" value={formAdmin.passwordAdmin} onChange={handleChange} />
-                <button>login</button>            
+                <button>Login</button>            
             </form>
             <h4>Signup admin</h4>
             <form type='submit' onSubmit={handleSignup}>

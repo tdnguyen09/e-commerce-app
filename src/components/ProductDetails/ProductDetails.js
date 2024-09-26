@@ -97,7 +97,7 @@ function ProductDetails ({ user, wishlistItems, setWishlistItems }) {
                         </div>
                         : <button className="cart-btn" onClick={() => context.addItemToCart(displayProduct.id)}>Add to Cart</button>
                     }
-                    {isItemInWishlist ?
+                    {isItemInWishlist && user ?
                         <button onClick={() => removeFromWishlist(displayProduct.id)}>❤️</button>
                         :<button onClick={() => addToWishlist(displayProduct.id)}>🤍</button>
                     }
