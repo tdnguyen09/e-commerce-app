@@ -8,6 +8,7 @@ import searchIcon from "./search.png";
 import { WebContext } from "../WebContext";
 import ProductItem from "../ProductItem/ProductItem";
 import logoutIcon from "./logout.svg"
+import atokLogo from "./atokshop-logo.png"
 
 function NavBar({ user, wishlistItems }) {
     const context = useContext(WebContext);
@@ -45,7 +46,7 @@ function NavBar({ user, wishlistItems }) {
         <div className="navbar">
             <div id="navbar1">
                 <div className="navbar-left">
-                    <NavLink to="/">ATOK Shop</NavLink>
+                    <NavLink to="/"><img src={atokLogo} alt="atok-shop" id="nav-bar-img" /></NavLink>
                 </div>
                 <div className="navbar-middle">
                     <div className="navbar-middle-top">

@@ -38,7 +38,7 @@ function CheckoutForm ({ onPaymentSuccess, amount }) {
                 setErrorMessage(error.message);
                 setLoaing(false);
             } else if (paymentIntent && paymentIntent.status === 'succeeded') {
-                onPaymentSuccess();
+                onPaymentSuccess(); /* submit the order*/
                 setLoaing(false);
             }
         })

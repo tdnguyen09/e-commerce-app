@@ -7,6 +7,10 @@
     padding-top: 10px;
     max-width: 1500px;
 }
+#nav-bar-img {
+    width: 80%;
+    height: 50px;
+}
 #navbar1 {
     display: flex;
     width: 100%;
@@ -34,7 +38,7 @@
 .navbar-right p {
     position: absolute;
     z-index: 2;
-    top: 3px;
+    top: 10px;
     width: 20px;
     height: 20px;
     text-align: center;
@@ -48,7 +52,7 @@
     border: solid 1x green;
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 60%;
 }
 .navbar-middle-top {
     display: flex;
@@ -162,6 +166,13 @@
     }
     .navbar-section{
         font-size: 15px;
+    }
+    #nav-bar-img{
+        height: 40px;
+        width: 100px;
+    }
+    .navbar-right p{
+        top: 2px;
     }
     /* .navbar-middle-top input{
         width: 380px;
