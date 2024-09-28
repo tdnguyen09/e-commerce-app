@@ -85,10 +85,10 @@
     position: absolute;
     z-index: 1000;
     flex-wrap: wrap;
-    width: 50%;
+    width: 60%;
     max-height: 300px;
     overflow-y: scroll;
-    top: 45px;
+    top: 50px;
     background-color: rgb(251, 251, 251);
     box-sizing: border-box;
     justify-items: center;
